@@ -1,0 +1,57 @@
+/**
+ * New model file
+*/
+
+namespace org.acme.model
+
+participant NGO identified by id {
+	o String id  
+    o String name
+    o Integer funds
+}
+
+participant Company identified by id {
+	o String id
+    o Integer walletValue
+    o Integer emissions
+}
+
+participant Government identified by id {
+	o String id
+    o String name
+    o Integer fundValue
+}
+
+asset Contract identified by id {
+ 	o String id
+    o Integer payout
+    o Boolean satisfied
+    o Integer maxEmissions
+}
+
+asset Escrow identified by id {
+	o String id
+	o Integer value 
+}
+
+transaction ApproveReject {
+	--> Contract contract
+    --> Company company
+}
+
+transaction TransferCoin {
+	--> Escrow escrow
+    --> Company company
+    --> Contract contract
+}
+
+transaction addEscrow {
+	--> Escrow escrow 
+    --> NGO ngo
+}
+
+
+
+
+
+
